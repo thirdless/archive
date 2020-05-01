@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Radio 21</title>
+        <meta charset="utf-8"/>
+        <style>
+            *{margin:0;padding:0;}
+            body,html{background:#1d1d1d;}
+            .controls{font-size:20px;text-align:right;color:white;-webkit-app-region:drag;}
+            .controls div{display:inline-block;-webkit-app-region:no-drag;}
+        </style>
+    </head>
+    <body>
+        <div class="controls">
+            <div id="mini">Minimize</div>
+            <div id="close">Close</div>
+        </div>
+        <audio controls>
+            <source src="http://astreaming.virginradio.ro:8000/virgin_aacp_64k" type="audio/mp4"/>
+        </audio>
+        <script>
+            let win = require("electron").remote.getCurrentWindow();
+            document.querySelector("#close").addEventListener("click", function(){
+                win.close();
+            });
+            document.querySelector("#mini").addEventListener("click", function(){
+                win.minimize();
+            });
+
+            function done(){
+                let audioCtx = new AudioContext(),
+                    source = audioCtx.createMediaElementSource(document.querySelector("audio")),
+                    gainNode = audioCtx.createGain();
+                gainNode.gain.value = 1.5;
+                source.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                document.querySelector("audio").addEventListener("pause", function(){
+                    document.querySelector("audio").outerHTML = document.querySelector("audio").outerHTML;
+                    console.log("pause");
+                    done();
+                });
+            }
+            done();
+        </script>
+    </body>
+</html>
