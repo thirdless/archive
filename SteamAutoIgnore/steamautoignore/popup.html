@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SteamAutoIgnore</title>
+		<link rel="stylesheet" href="popup.css" type="text/css"/>
+	</head>
+	<body>
+		<noscript><h1>To use this extension, please enable javascript</h1></noscript>
+		
+		<h1>SteamAutoIgnore Settings</h1>
+		
+		<p>App settings</p>
+		
+		<div class="on-off"><div></div></div><div class="on-off-text"></div>
+		<div class="inputRow"><span class="text" title="Minimum 2 min, maximum 1 day">Check interval time <span class="tip">(in minutes)</span></span><input type="number" id="refreshTime" min="2" max="1440" required/></div>
+		<div class="inputRow"><span class="text" title="Steam API Key is required for some features to work. Click here to get your key."><a href="http://steamcommunity.com/dev/apikey" target="_blank">Steam API Key</a></span><input type="text" id="apiKey"/></div>
+		
+		<p>Group invites settings</p>
+		
+		<div class="inputRow"><span class="text" title="Case insensitive, words need to be separated by commas, e.g. FREE, CASE, $ (if you want to reject all the group invites type *)">Keywords to filter <span class="tip">(* = all)</span></span><input type="text" id="groupKeywords"/></div>
+		<div class="inputRow"><span class="text" title="If a group matches the keywords above, block the person who invited">If matches, block who invited</span><input type="checkbox" id="groupBlock"/></div>
+		
+		<p style="cursor:help;" title="Might be slow due to the multiple api requests">Friend invites settings</p>
+		
+		<div class="inputRow"><span class="text" title="Case insensitive, words need to be separated by commas, e.g. FREE, CASE, $">Keywords to reject</span><input type="text" id="friendKeywords"/></div>
+		<div class="inputRow"><span class="text" title="Selecting 0 will disable this option (this one does not require steam API)">Reject if profile is below level <span class="tip">(0=disable)</span>:</span><input type="number" id="levelReject" min="0" max="9999"/></div>
+		<div class="inputRow"><span class="text" title="Check if you want to reject private profiles">* Reject if profile is private:</span><input type="checkbox" id="privateReject"/></div>
+		<div class="inputRow"><span class="text" title="Check if you want to reject profiles with trade ban">* Reject if profile has trade ban:</span><input type="checkbox" id="tradebanReject"/></div>
+		<div class="inputRow"><span class="text" title="Check if you want to reject profiles with VAC or game ban">* Reject if profile has VAC ban / game ban:</span><input type="checkbox" id="vacReject"/></div>
+		<div class="inputRow"><span class="text" title="Check if you want to reject profiles with community ban">* Reject if profile has community ban:</span><input type="checkbox" id="cbanReject"/></div>
+		
+		<div class="tiprow">* = Requires Steam-API</div>
+		
+		<button id="save-button">Save</button>
+		
+		<span id="donate" title="Every donation is highly apreciated !"><a href="https://steamcommunity.com/tradeoffer/new/?partner=245216420&token=nE-n3nml" target="_blank">Donate!</a></span>
+		
+		<script src="popup.js"></script>
+	</body>
+</html>
