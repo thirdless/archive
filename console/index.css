@@ -1,0 +1,39 @@
+@font-face{font-family:"console";src:url(font.ttf);}
+@font-face{font-family:"text";src:url(font1.ttf);}
+*{margin:0;padding:0;}
+body{background:#111;font-family:"text";}
+svg{fill:currentColor;}
+a{text-decoration:inherit;color:inherit;}
+
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background:#eee;}
+::-webkit-scrollbar-thumb{background:#888;}
+::-webkit-scrollbar-thumb:hover{background:#555;}
+
+.desktop{height:100vh;width:100%;overflow:hidden;position:relative;}
+
+.desktop>.space{position:relative;background:url(fundal.png);background-size:cover;height:100%;z-index:4;}
+.desktop>.space>.window{overflow:hidden;position:absolute;top:10vh;left:5vw;width:70vw;height:70vh;background:#000;border-radius:5px;box-shadow:0 0 5px rgba(0,0,0,.7);}
+.desktop>.space>.window>.bar{top:0;}
+.desktop>.space>.window>.bar>.props{height:100%;}
+.desktop>.space>.window>.bar>.props>.name{line-height:30px;}
+.desktop>.space>.window>.content{cursor:default;margin-top:40px;height:calc(100% - 40px);width:100%;overflow:auto;box-sizing:border-box;padding:20px 20px 40px;font-family:"console";color:#fff;font-size:20px;letter-spacing:0.05em;}
+.desktop>.space>.window>.content ::selection{background:#fff;color:#000;}
+.desktop>.space>.window>.content .command{color:#1DE9B6;}
+.desktop>.space>.window>.content .command,.desktop>.space>.window>.content .line{display:block;margin:0 0 20px;}
+
+.desktop>.space>.window>.content>.textarea{display:block;position:relative;}
+.desktop>.space>.window>.content>.textarea>textarea{white-space:pre-wrap;word-break:break-all;resize:none;overflow:hidden;height:100%;width:100%;z-index:3;color:#1DE9B6;background:inherit;/*color:inherit;*/border:inherit;outline:inherit;box-shadow:inherit;cursor:inherit;font-family:inherit;font-size:inherit;letter-spacing:inherit;line-height:inherit;display:inherit;font-weight:inherit;}
+.desktop>.space>.window>.content>.textarea>.hover{position:absolute;top:0;left:0;z-index:4;}
+
+.desktop>.space>.window>.content .selector,.desktop>.space>.window>.content>.textarea>.hover{color:#00B0FF;}
+
+.desktop>.bar{bottom:0;z-index:5;}
+.desktop>.bar>.program{height:100%;max-width:300px;padding:inherit;box-sizing:inherit;background:#ddd;border:1px solid #777;border-radius:5px;}
+.desktop>.bar>.program>.name{line-height:18px;}
+
+.desktop>.bar,.desktop>.space>.window>.bar{position:absolute;left:0;right:0;background:linear-gradient(to bottom,#ddd, #aaa);height:40px;box-sizing:border-box;padding:5px 10px;cursor:default;user-select:none;}
+.desktop>.space>.window>.bar>.props>.icon,.desktop>.bar>.program>.icon{height:100%;width:20px;padding:0 5px;}
+.desktop>.bar>.program>.icon>svg,.desktop>.space>.window>.bar>.props>.icon>svg{height:100%;width:100%;}
+.desktop>.bar>.program>.name,.desktop>.space>.window>.bar>.props>.name{font-size:15px;}
+.desktop>.bar>.program>.icon,.desktop>.bar>.program>.name,.desktop>.space>.window>.bar>.props>.icon,.desktop>.space>.window>.bar>.props>.name{display:inline-block;vertical-align:top;}
